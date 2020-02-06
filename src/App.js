@@ -1,17 +1,9 @@
-import React from 'react';
-import './App.css';
+import React from "react"
+import "./App.css"
+import Login from "./Pages/Login"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-
-        <p>
-          HELLO
-        </p>
-      </header>
-    </div>
-  );
+const App = () => {
+  return <Login />
 }
 
-export default App;
+export default App
