@@ -1,9 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import Title from "../components/Title"
-
 import styled from "styled-components"
-
 import { useTrips } from "../stores/TripStore"
 
 const Trips = () => {
@@ -11,7 +9,6 @@ const Trips = () => {
   console.log(trips)
 
   const mapedTrips = trips.map(trip => {
-    console.log(trip)
     return (
       <StyledDiv to={`/trips/${trip.id}`} cover={trip.cover} key={trip.id}>
         <p>{trip.title}</p>

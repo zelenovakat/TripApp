@@ -18,7 +18,7 @@ const mockedTrips = [
     cover: phuketImg,
     title: "Phuket",
     description: "Some text",
-    from: "2020.03.20",
+    from: "200.03.20",
     to: "2020.04.10",
     numberOfPeople: 4,
     budget: 0,
