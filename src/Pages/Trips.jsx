@@ -5,15 +5,15 @@ import styled from "styled-components"
 import { useTrips } from "../stores/TripStore"
 
 const Trips = () => {
-  const { trips, setTrips } = useTrips()
+  const { trips } = useTrips() // не забыть про setTrips
   console.log(trips)
 
   const mapedTrips = trips.map(trip => {
     return (
-      <StyledDiv to={`/trips/${trip.id}`} cover={trip.cover} key={trip.id}>
+      <StyledDiv to={`/trips/${trip.id}`} title={trip.title} key={trip.id}>
         <p>{trip.title}</p>
         <p>
-          {trip.from}-{trip.to}
+          {trip.to}-{trip.from}
         </p>
         <p>{trip.numberOfPeople}</p>
       </StyledDiv>
@@ -28,11 +28,33 @@ const Trips = () => {
       <ScrollArea>
         <TripsWrapper>{mapedTrips}</TripsWrapper>
       </ScrollArea>
+      <li>
+        <StyledButton>
+          <Link to="/newTrip">New Trip</Link>
+        </StyledButton>
+      </li>
     </>
   )
 }
 
 export default Trips
+
+export const StyledButton = styled.button`
+  margin: 15px;
+  font-size: 20px;
+  background: border-box;
+  color: white;
+  border-radius: 15px;
+  -webkit-text-stroke: medium;
+  &:hover {
+    background-color: mediumaquamarine;
+    color: black;
+    text-decoration: none;
+  }
+  link {
+    color: white;
+  }
+`
 
 const TitleWrapper = styled.div`
   margin: 10px;
@@ -41,11 +63,13 @@ const TitleWrapper = styled.div`
 const StyledDiv = styled(Link)`
   padding: 0 24px 16px;
   margin: 10px;
-  min-height: 400px;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
+  min-width: 200px;
+  text-decoration-line: none;
 
   /* Add dark overlay */
   &:before {
@@ -68,9 +92,9 @@ const StyledDiv = styled(Link)`
   }
 
   ${props =>
-    props.cover &&
+    props.title &&
     `
-      background: url(${props.cover});
+      background: url("https://source.unsplash.com/900x1600/?${props.title}");
       background-size: cover;
     `}
 `

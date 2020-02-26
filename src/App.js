@@ -6,6 +6,7 @@ import SingleTrip from "./pages/SingleTrip"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import styled from "styled-components"
 import { ProvideTrips } from "./stores/TripStore"
+import NewTrip from "./pages/NewTrip"
 
 const App = () => {
   return (
@@ -29,6 +30,9 @@ const App = () => {
             </Route>
             <Route path="/trips">
               <Trips />
+            </Route>
+            <Route path="/newTrip">
+              <NewTrip />
             </Route>
           </Switch>
         </div>
