@@ -1,48 +1,66 @@
 import React from "react"
 import "./App.css"
-import Login from "./pages/Login"
+// import Login from "./pages/Login"
 import Trips from "./pages/Trips"
-import SingleTrip from "./pages/SingleTrip"
+import SingleTrip from "./pages/SingleTrip/Main"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import styled from "styled-components"
 import { ProvideTrips } from "./stores/TripStore"
 import NewTrip from "./pages/NewTrip"
+import AddEvent from "./pages/AddEvent"
+import { ProvideEvents } from "./stores/EventStore"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons"
 
 const App = () => {
   return (
     <ProvideTrips>
-      <Router>
-        <div>
-          <StyledUl>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/trips">Trips</Link>
-            </li>
-          </StyledUl>
-          <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/trips/:tripId">
-              <SingleTrip />
-            </Route>
-            <Route path="/trips">
-              <Trips />
-            </Route>
-            <Route path="/newTrip">
-              <NewTrip />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+      <ProvideEvents>
+        <Router>
+          <div>
+            <Switch>
+              <Route path="/trips/:tripId/AddEvent">
+                <StyledLi>
+                  <Link to="/trips">
+                    <FontAwesomeIcon icon={faAngleLeft} /> trips
+                  </Link>
+                </StyledLi>
+                <AddEvent />
+              </Route>
+              <Route path="/trips/:tripId">
+                <StyledLi>
+                  <Link to="/trips">
+                    <FontAwesomeIcon icon={faAngleLeft} /> trips
+                  </Link>
+                </StyledLi>
+                <SingleTrip />
+              </Route>
+              <Route path="/trips">
+                <Trips />
+              </Route>
+              <Route path="/newTrip">
+                <StyledLi>
+                  <Link to="/trips">
+                    <FontAwesomeIcon icon={faAngleLeft} /> trips
+                  </Link>
+                </StyledLi>
+                <NewTrip />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </ProvideEvents>
     </ProvideTrips>
   )
 }
 
 export default App
 
-const StyledUl = styled.ul`
-  margin: 0;
+const StyledLi = styled.li`
+  color: white;
+  list-style-type: none;
+  a {
+    color: white;
+    text-decoration: none;
+  }
 `

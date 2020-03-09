@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form"
 import styled from "styled-components"
 import { useTrips } from "../stores/TripStore"
 import { useHistory } from "react-router-dom"
-import newTripForm2 from "../images/newTripForm2.jpeg"
 
 export default function NewTrip() {
   const { register, handleSubmit, errors } = useForm()
@@ -20,20 +19,19 @@ export default function NewTrip() {
       .substr(2, 9)
   }
 
-  console.log("errors", errors)
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)} autoComplete="off">
       <StyleLabel>name</StyleLabel>
       <StyleInput name="title" defaultValue="" ref={register({ required: true })} />
-      {errors.name && <span>Please enter your name trip</span>}
+      {errors.title && <span>Please enter your name trip</span>}
 
       <StyleLabel>numberOfpeople</StyleLabel>
       <StyleInput name="numberOfPeople" defaultValue="" ref={register({ required: true })} />
       {errors.numberOfPeople && <span>Please enter number of people</span>}
 
-      <StyleLabel>to</StyleLabel>
-      <StyleInput type="date" name="to" defaultValue="to" ref={register} />
       <StyleLabel>from</StyleLabel>
+      <StyleInput type="date" name="to" defaultValue="to" ref={register} />
+      <StyleLabel>to</StyleLabel>
       <StyleInput type="date" name="from" defaultValue="from" ref={register} />
 
       <StyleInput name="id" type="hidden" value={getNewId()} ref={register} />
@@ -47,10 +45,15 @@ const StyledForm = styled.form`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-image: url(${newTripForm2});
   background-size: cover;
   min-height: 100vh;
   background-repeat: no-repeat;
+
+  span {
+    color: white;
+    display: flex;
+    justify-content: center;
+  }
 `
 const StyleInput = styled.input`
   color: white;
@@ -60,7 +63,6 @@ const StyleInput = styled.input`
   padding: 20px;
   font-size: 16px;
   font-weight: 100;
-  letter-spacing: 10px;
   margin: 10px;
   width: 300px;
   padding: 10px;

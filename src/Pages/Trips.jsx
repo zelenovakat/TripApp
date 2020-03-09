@@ -1,22 +1,29 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import Title from "../components/Title"
 import styled from "styled-components"
 import { useTrips } from "../stores/TripStore"
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons"
 const Trips = () => {
-  const { trips } = useTrips() // не забыть про setTrips
-  console.log(trips)
-
+  const { trips } = useTrips()
+  const { removeTrip } = useTrips()
+  const handleRemoveTrip = TripId => {
+    removeTrip(TripId)
+  }
   const mapedTrips = trips.map(trip => {
     return (
-      <StyledDiv to={`/trips/${trip.id}`} title={trip.title} key={trip.id}>
-        <p>{trip.title}</p>
-        <p>
-          {trip.to}-{trip.from}
-        </p>
-        <p>{trip.numberOfPeople}</p>
-      </StyledDiv>
+      <Main key={trip.id}>
+        <StyledDiv to={`/trips/${trip.id}`} title={trip.title}>
+          <p>{trip.title}</p>
+          <p>
+            {trip.to}-{trip.from}
+          </p>
+          <p>{trip.numberOfPeople}</p>
+        </StyledDiv>
+        <Button onClick={() => handleRemoveTrip(trip.id)}>
+          <FontAwesomeIcon icon={faTrashAlt} />
+        </Button>
+      </Main>
     )
   })
 
@@ -28,24 +35,39 @@ const Trips = () => {
       <ScrollArea>
         <TripsWrapper>{mapedTrips}</TripsWrapper>
       </ScrollArea>
-      <li>
+      <StyledLi>
         <StyledButton>
           <Link to="/newTrip">New Trip</Link>
         </StyledButton>
-      </li>
+      </StyledLi>
     </>
   )
 }
 
 export default Trips
+const Title = styled.h2`
+  color: white;
+`
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
+const Button = styled.button`
+  color: red;
+  font-size: large;
+`
 export const StyledButton = styled.button`
   margin: 15px;
   font-size: 20px;
-  background: border-box;
   color: white;
   border-radius: 15px;
+  padding: 8px 16px;
   -webkit-text-stroke: medium;
+  a {
+    text-decoration: none;
+    color: darkslategray;
+  }
   &:hover {
     background-color: mediumaquamarine;
     color: black;
@@ -58,6 +80,8 @@ export const StyledButton = styled.button`
 
 const TitleWrapper = styled.div`
   margin: 10px;
+  display: flex;
+  flex-direction: column;
 `
 
 const StyledDiv = styled(Link)`
@@ -96,6 +120,7 @@ const StyledDiv = styled(Link)`
     `
       background: url("https://source.unsplash.com/900x1600/?${props.title}");
       background-size: cover;
+      border: 2px solid white;
     `}
 `
 const TripsWrapper = styled.div`
@@ -103,6 +128,10 @@ const TripsWrapper = styled.div`
 `
 
 const ScrollArea = styled.div`
-  width: 300px;
   overflow-x: scroll;
+`
+const StyledLi = styled.li`
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
 `

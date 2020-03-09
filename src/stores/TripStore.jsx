@@ -19,8 +19,8 @@ const mockedTrips = [
     cover: phuketImg,
     title: "Phuket",
     description: "Some text",
-    to: "2021.02.24",
-    from: "2021.02.28",
+    to: "24.02.2021",
+    from: "29.02.2021",
     numberOfPeople: 4,
     budget: 0,
   },
@@ -29,8 +29,8 @@ const mockedTrips = [
     cover: florenceImg,
     title: "Florence",
     description: "Some text",
-    to: "2021.02.24",
-    from: "2021.02.28",
+    to: "01.03.2021",
+    from: "01.03.2021",
     numberOfPeople: 2,
     budget: 0,
   },
@@ -39,8 +39,8 @@ const mockedTrips = [
     cover: turkey1Img,
     title: "Turkey",
     description: "Some text",
-    to: "2021.02.24",
-    from: "2021.02.28",
+    to: "05.03.2021",
+    from: "10.03.2021",
     numberOfPeople: 10,
     budget: 0,
   },
@@ -56,8 +56,14 @@ function useProvideTrips() {
 
   const getTripById = tripId => trips.find(item => tripId === item.id) || {}
 
+  const removeTrip = tripId => {
+    const tripsWithoutOne = trips.filter(trip => trip.id !== tripId)
+    setTrips(tripsWithoutOne)
+  }
+
   const createTrip = data => {
     const newTrips = [...trips, data]
+    console.log(newTrips)
     setTrips(newTrips)
   }
 
@@ -69,5 +75,6 @@ function useProvideTrips() {
     setTrips,
     getTripById,
     createTrip,
+    removeTrip,
   }
 }
