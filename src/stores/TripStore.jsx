@@ -63,7 +63,6 @@ function useProvideTrips() {
 
   const createTrip = data => {
     const newTrips = [...trips, data]
-    console.log(newTrips)
     setTrips(newTrips)
   }
 
