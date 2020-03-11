@@ -15,10 +15,10 @@ const DaysWithEvents = props => {
     removeEvent(eventId)
   }
   const days = []
-  for (const oneDay = moment(trip.to); oneDay.isBefore(trip.from); oneDay.add("days", 1)) {
+  for (const oneDay = moment(trip.from); oneDay.isBefore(trip.to); oneDay.add("days", 1)) {
     let daysWithEvents = {
       date: oneDay.format(),
-      events: events.filter(event => oneDay.isSame(event.to)),
+      events: events.filter(event => oneDay.isSame(event.from)),
     }
     days.push(daysWithEvents)
   }
@@ -28,7 +28,7 @@ const DaysWithEvents = props => {
       {days.map((day, i) => {
         return (
           <OneDay key={i}>
-            <DaysDate key={i}>{moment(day.date).format("ddd DD.MM.YYYY")}</DaysDate>
+            <DaysDate>{moment(day.date).format("ddd DD.MM.YYYY")}</DaysDate>
             <Events>
               {day.events.map(event => {
                 return (

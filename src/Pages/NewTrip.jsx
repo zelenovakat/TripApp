@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import styled from "styled-components"
 import { useTrips } from "../stores/TripStore"
 import { useHistory } from "react-router-dom"
+import { getNewId } from "../components/GetNewId"
 
 export default function NewTrip() {
   const { register, handleSubmit, errors } = useForm()
@@ -13,11 +14,6 @@ export default function NewTrip() {
     createTrip(data)
     history.push("/trips")
   }
-  const getNewId = () => {
-    return Math.random()
-      .toString(36)
-      .substr(2, 9)
-  }
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -25,14 +21,14 @@ export default function NewTrip() {
       <StyleInput name="title" defaultValue="" ref={register({ required: true })} />
       {errors.title && <span>Please enter your name trip</span>}
 
-      <StyleLabel>numberOfpeople</StyleLabel>
+      <StyleLabel>number of people</StyleLabel>
       <StyleInput name="numberOfPeople" defaultValue="" ref={register({ required: true })} />
       {errors.numberOfPeople && <span>Please enter number of people</span>}
 
       <StyleLabel>from</StyleLabel>
-      <StyleInput type="date" name="to" defaultValue="to" ref={register} />
-      <StyleLabel>to</StyleLabel>
       <StyleInput type="date" name="from" defaultValue="from" ref={register} />
+      <StyleLabel>to</StyleLabel>
+      <StyleInput type="date" name="to" defaultValue="to" ref={register} />
 
       <StyleInput name="id" type="hidden" value={getNewId()} ref={register} />
       <InputWrapper>
@@ -80,7 +76,6 @@ const InputWrapper = styled.div`
 `
 const StyleLabel = styled.label`
   margin-left: 10px;
-  font-family: "Playfair Display SC", serif;
   font-weight: bold;
   color: white;
 `

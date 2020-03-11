@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { useTrips } from "../stores/TripStore"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons"
+
 const Trips = () => {
   const { trips } = useTrips()
   const { removeTrip } = useTrips()
@@ -16,7 +17,7 @@ const Trips = () => {
         <StyledDiv to={`/trips/${trip.id}`} title={trip.title}>
           <p>{trip.title}</p>
           <p>
-            {trip.to}-{trip.from}
+            {trip.from}-{trip.to}
           </p>
           <p>{trip.numberOfPeople}</p>
         </StyledDiv>
@@ -95,7 +96,6 @@ const StyledDiv = styled(Link)`
   min-width: 200px;
   text-decoration-line: none;
 
-  /* Add dark overlay */
   &:before {
     content: "";
     background: rgba(0, 0, 0, 0.2);

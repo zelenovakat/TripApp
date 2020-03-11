@@ -1,6 +1,5 @@
 import React from "react"
 import "./App.css"
-// import Login from "./pages/Login"
 import Trips from "./pages/Trips"
 import SingleTrip from "./pages/SingleTrip/Main"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
@@ -35,9 +34,6 @@ const App = () => {
                 </StyledLi>
                 <SingleTrip />
               </Route>
-              <Route path="/trips">
-                <Trips />
-              </Route>
               <Route path="/newTrip">
                 <StyledLi>
                   <Link to="/trips">
@@ -45,6 +41,9 @@ const App = () => {
                   </Link>
                 </StyledLi>
                 <NewTrip />
+              </Route>
+              <Route path="/">
+                <Trips />
               </Route>
             </Switch>
           </div>

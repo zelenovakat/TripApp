@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom"
 import { useTrips } from "../stores/TripStore"
 import loginCover from "../images/loginCover.jpg"
 import moment from "moment"
+import { getNewId } from "../components/GetNewId"
 
 export default function AddEvent() {
   const { tripId } = useParams()
@@ -23,12 +24,6 @@ export default function AddEvent() {
     history.push(`/trips/${trip.id}`)
   }
 
-  const getNewId = () => {
-    return Math.random()
-      .toString(36)
-      .substr(2, 9)
-  }
-
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)} autoComplete="off">
       <h2>ADD EVENT</h2>
@@ -42,10 +37,10 @@ export default function AddEvent() {
       <StyleLabel>date</StyleLabel>
       <StyleInput
         type="date"
-        name="to"
-        defaultValue="to"
+        name="from"
+        defaultValue="from"
         ref={register({
-          validate: value => moment(value).isAfter(trip.to) && moment(value).isBefore(trip.from),
+          validate: value => moment(value).isAfter(trip.from) && moment(value).isBefore(trip.to),
         })}
       />
       {errors.to && <span>Please enter correct date</span>}
@@ -95,7 +90,6 @@ const StyleInput = styled.input`
 `
 const StyleLabel = styled.label`
   margin-left: 10px;
-  font-family: "Playfair Display SC", serif;
   font-weight: bold;
   color: white;
 `
@@ -103,7 +97,7 @@ const InputWrapper = styled.div`
   display: flex;
   justify-content: center;
   &:hover {
-    background-color: mediumaquamarine;
+    background-color: #f20cc0;
     color: white;
     text-decoration: none;
   }

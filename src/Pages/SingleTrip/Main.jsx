@@ -13,7 +13,7 @@ const SingleTrip = () => {
 
   const tripTo = moment(trip.to)
   const tripFrom = moment(trip.from)
-  const difference = tripFrom.diff(tripTo, "days")
+  const difference = tripTo.diff(tripFrom, "days") || 0
 
   return (
     <DivWrapper>
@@ -25,15 +25,15 @@ const SingleTrip = () => {
           <p>{trip.numberOfPeople} persons</p>
         </InfoBackground>
       </TripInfo>
+      <StyledButton>
+        <Link to={`/trips/${trip.id}/AddEvent`}>Add event</Link>
+      </StyledButton>
 
       <RowWrapper>
         <MiddleLine></MiddleLine>
 
         <DaysWithEvents trip={trip} />
       </RowWrapper>
-      <StyledButton>
-        <Link to={`/trips/${trip.id}/AddEvent`}>Add event</Link>
-      </StyledButton>
     </DivWrapper>
   )
 }
@@ -71,7 +71,6 @@ const InfoBackground = styled.div`
     position: relative;
   }
 
-  /* Add dark overlay */
   &:before {
     content: "";
     background: rgba(0, 0, 0, 0.4);
