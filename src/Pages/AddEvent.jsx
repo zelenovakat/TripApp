@@ -19,7 +19,7 @@ export default function AddEvent() {
   const { register, handleSubmit, errors } = useForm()
   const history = useHistory()
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     createEvents(data)
     history.push(`/trips/${trip.id}`)
   }
@@ -40,7 +40,7 @@ export default function AddEvent() {
         name="from"
         defaultValue="from"
         ref={register({
-          validate: value => moment(value).isAfter(trip.from) && moment(value).isBefore(trip.to),
+          validate: (value) => moment(value).isAfter(trip.from) && moment(value).isBefore(trip.to),
         })}
       />
       {errors.to && <span>Please enter correct date</span>}
@@ -62,17 +62,15 @@ const StyledForm = styled.form`
   background-size: cover;
   min-height: 100vh;
   background-repeat: no-repeat;
-  /* background-image: url(${loginCover}); */
   span {
     color: white;
     display: flex;
     justify-content: center;
   }
-  h2{
+  h2 {
     color: white;
     display: flex;
-  justify-content: center;
-
+    justify-content: center;
   }
 `
 const StyleInput = styled.input`
