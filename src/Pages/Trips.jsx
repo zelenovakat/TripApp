@@ -50,8 +50,8 @@ const Title = styled.h2`
   color: white;
 `
 const Main = styled.div`
-  display: flex;
   flex-direction: column;
+  width: 100%;
 `
 
 const Button = styled.button`
