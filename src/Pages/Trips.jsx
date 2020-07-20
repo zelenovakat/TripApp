@@ -1,68 +1,130 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { useTrips } from "../stores/TripStore"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons"
+import { faUsers } from "@fortawesome/free-solid-svg-icons"
+import RemoveModal from "../components/RemoveModal"
+import useModal from "../utils/useModal"
 
 const Trips = () => {
   const { trips } = useTrips()
   const { removeTrip } = useTrips()
-  const handleRemoveTrip = TripId => {
-    removeTrip(TripId)
+  const [tripId, setTripId] = useState(0)
+  const { isShowing, toggle } = useModal()
+  const handleRemoveTrip = (tripId) => {
+    removeTrip(tripId)
+    toggle(false)
   }
-  const mapedTrips = trips.map(trip => {
+  const closeRemoveTripModal = () => {
+    toggle(false)
+  }
+  const toggleModal = (id) => {
+    setTripId(id)
+    toggle()
+  }
+  const mapedTrips = trips.map((trip) => {
     return (
-      <Main key={trip.id}>
-        <StyledDiv to={`/trips/${trip.id}`} title={trip.title}>
-          <p>{trip.title}</p>
-          <p>
-            {trip.from}-{trip.to}
-          </p>
-          <p>{trip.numberOfPeople}</p>
-        </StyledDiv>
-        <Button onClick={() => handleRemoveTrip(trip.id)}>
+      <Wrapper key={trip.id}>
+        <Main>
+          <MainView to={`/trips/${trip.id}`} title={trip.title}>
+            <TitleTrips>
+              <NameTrip>{trip.title}</NameTrip>
+              <p>
+                {trip.from}-{trip.to}
+              </p>
+              <NumberOfPeople>
+                <p>{trip.numberOfPeople}</p>
+                <FontAwesomeIcon icon={faUsers} />
+              </NumberOfPeople>
+            </TitleTrips>
+          </MainView>
+        </Main>
+        <Button onClick={() => toggleModal(trip.id)}>
           <FontAwesomeIcon icon={faTrashAlt} />
         </Button>
-      </Main>
+      </Wrapper>
     )
   })
 
   return (
-    <>
+    <MainWrapper>
       <TitleWrapper>
         <Title>My Trips</Title>
       </TitleWrapper>
       <ScrollArea>
         <TripsWrapper>{mapedTrips}</TripsWrapper>
+        <RemoveModal
+          isShowing={isShowing}
+          hide={toggle}
+          handleRemoveTrip={() => handleRemoveTrip(tripId)}
+          closeRemoveTripModal={closeRemoveTripModal}
+        />
       </ScrollArea>
-      <StyledLi>
+      <List>
         <StyledButton>
           <Link to="/newTrip">New Trip</Link>
         </StyledButton>
-      </StyledLi>
-    </>
+      </List>
+    </MainWrapper>
   )
 }
 
 export default Trips
+const Wrapper = styled.div`
+  position: relative;
+  margin-right: 15px;
+`
+const NumberOfPeople = styled.div`
+  display: flex;
+  svg {
+    font-size: 20px;
+    color: #ffffff;
+    margin-left: 10px;
+  }
+`
+const NameTrip = styled.p`
+  font-weight: bold;
+  padding-bottom: 10px;
+`
+const MainWrapper = styled.div`
+  margin: 15px;
+`
+const TitleTrips = styled.div`
+  padding: 10px 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+`
 const Title = styled.h2`
-  color: white;
+  color: #000000;
+  font-weight: normal;
 `
 const Main = styled.div`
   flex-direction: column;
   width: 100%;
+  position: relative;
 `
-
 const Button = styled.button`
-  color: red;
-  font-size: large;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 50px;
+  width: 35px;
+  border: 0;
+  z-index: 9999;
+  svg {
+    font-size: 20px;
+  }
 `
 export const StyledButton = styled.button`
   margin: 15px;
   font-size: 20px;
-  color: white;
-  border-radius: 15px;
+  color: #ffffff;
+  border-radius: 5px;
   padding: 8px 16px;
   -webkit-text-stroke: medium;
   a {
@@ -75,25 +137,20 @@ export const StyledButton = styled.button`
     text-decoration: none;
   }
   link {
-    color: white;
+    color: #ffffff;
   }
 `
-
 const TitleWrapper = styled.div`
-  margin: 10px;
   display: flex;
   flex-direction: column;
 `
-
-const StyledDiv = styled(Link)`
-  padding: 0 24px 16px;
-  margin: 10px;
+const MainView = styled(Link)`
   min-height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
-  min-width: 200px;
+  min-width: 250px;
   text-decoration-line: none;
 
   &:before {
@@ -108,29 +165,28 @@ const StyledDiv = styled(Link)`
   }
 
   p {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 20px;
     margin: 0;
     color: #fff;
     z-index: 2;
   }
 
-  ${props =>
+  ${(props) =>
     props.title &&
     `
       background: url("https://source.unsplash.com/900x1600/?${props.title}");
       background-size: cover;
-      border: 2px solid white;
+      border-radius: 5px;
+      overflow: hidden;
     `}
 `
 const TripsWrapper = styled.div`
   display: flex;
 `
-
 const ScrollArea = styled.div`
   overflow-x: scroll;
 `
-const StyledLi = styled.li`
+const List = styled.li`
   list-style-type: none;
   display: flex;
   justify-content: center;

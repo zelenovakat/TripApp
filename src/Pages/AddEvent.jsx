@@ -25,17 +25,17 @@ export default function AddEvent() {
   }
 
   return (
-    <StyledForm onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+    <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
       <h2>ADD EVENT</h2>
-      <StyleInput name="id" type="hidden" value={getNewId()} ref={register} />
-      <StyleLabel>description</StyleLabel>
-      <StyleInput name="description" defaultValue="" ref={register} />
+      <Input name="id" type="hidden" value={getNewId()} ref={register} />
+      <Lable>description</Lable>
+      <Input name="description" defaultValue="" ref={register} />
 
-      <StyleLabel>title</StyleLabel>
-      <StyleInput name="title" defaultValue="" ref={register} />
+      <Lable>title</Lable>
+      <Input name="title" defaultValue="" ref={register} />
 
-      <StyleLabel>date</StyleLabel>
-      <StyleInput
+      <Lable>date</Lable>
+      <Input
         type="date"
         name="from"
         defaultValue="from"
@@ -44,18 +44,18 @@ export default function AddEvent() {
         })}
       />
       {errors.to && <span>Please enter correct date</span>}
-      <StyleLabel>time</StyleLabel>
-      <StyleInput type="time" name="time" defaultValue="time" ref={register} />
+      <Lable>time</Lable>
+      <Input type="time" name="time" defaultValue="time" ref={register} />
 
-      <StyleInput name="tripId" type="hidden" value={trip.id} ref={register} />
-      <InputWrapper>
-        <StyleInput type="submit" />
-      </InputWrapper>
-    </StyledForm>
+      <Input name="tripId" type="hidden" value={trip.id} ref={register} />
+      <SubmitWrapper>
+        <Input type="submit" />
+      </SubmitWrapper>
+    </Form>
   )
 }
 
-const StyledForm = styled.form`
+const Form = styled.form`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -63,21 +63,21 @@ const StyledForm = styled.form`
   min-height: 100vh;
   background-repeat: no-repeat;
   span {
-    color: white;
+    color: #000000;
     display: flex;
     justify-content: center;
   }
   h2 {
-    color: white;
+    color: #000000;
     display: flex;
     justify-content: center;
   }
 `
-const StyleInput = styled.input`
-  color: white;
+const Input = styled.input`
+  color: #000000;
   text-transform: uppercase;
   background: none;
-  border: 3px solid white;
+  border: 3px solid #000000;
   padding: 20px;
   font-size: 16px;
   font-weight: 100;
@@ -86,17 +86,17 @@ const StyleInput = styled.input`
   padding: 10px;
   border-radius: 10px;
 `
-const StyleLabel = styled.label`
+const Lable = styled.label`
   margin-left: 10px;
   font-weight: bold;
-  color: white;
+  color: #000000;
 `
-const InputWrapper = styled.div`
+const SubmitWrapper = styled.div`
   display: flex;
   justify-content: center;
   &:hover {
     background-color: #f20cc0;
-    color: white;
+    color: #000000;
     text-decoration: none;
   }
 `

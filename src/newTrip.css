@@ -5,7 +5,7 @@ form {
 
 h1 {
   font-weight: 100;
-  color: white;
+  color: #000000;
   text-align: center;
   padding-bottom: 10px;
   border-bottom: 1px solid rgb(79, 98, 148);
@@ -31,7 +31,7 @@ input {
   box-sizing: border-box;
   width: 100%;
   border-radius: 4px;
-  border: 1px solid white;
+  border: 1px solid #000000;
   padding: 10px 15px;
   margin-bottom: 10px;
   font-size: 14px;
@@ -43,7 +43,7 @@ label {
   display: block;
   margin-bottom: 13px;
   margin-top: 20px;
-  color: white;
+  color: #000000;
   font-size: 14px;
   font-weight: 200;
 }
@@ -51,7 +51,7 @@ label {
 button[type="submit"],
 input[type="submit"] {
   background: #ec5990;
-  color: white;
+  color: #000000;
   text-transform: uppercase;
   border: none;
   margin-top: 40px;
@@ -98,7 +98,7 @@ button[type="button"] {
   display: block;
   appearance: none;
   background: #333;
-  color: white;
+  color: #000000;
   border: none;
   text-transform: uppercase;
   padding: 10px 20px;

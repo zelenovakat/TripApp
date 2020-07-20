@@ -16,7 +16,7 @@ const SingleTrip = () => {
   const difference = tripTo.diff(tripFrom, "days") || 0
 
   return (
-    <DivWrapper>
+    <MainWrapper>
       <TripInfo title={trip.title}>
         <InfoBackground>
           <p>
@@ -25,22 +25,22 @@ const SingleTrip = () => {
           <p>{trip.numberOfPeople} persons</p>
         </InfoBackground>
       </TripInfo>
-      <StyledButton>
+      <Button>
         <Link to={`/trips/${trip.id}/AddEvent`}>Add event</Link>
-      </StyledButton>
+      </Button>
 
       <RowWrapper>
         <MiddleLine></MiddleLine>
 
         <DaysWithEvents trip={trip} />
       </RowWrapper>
-    </DivWrapper>
+    </MainWrapper>
   )
 }
 
 export default SingleTrip
 
-const StyledButton = styled.button`
+const Button = styled.button`
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 15px;
@@ -95,7 +95,7 @@ const TripInfo = styled.div`
   flex-direction: column;
   justify-content: flex-end;
 
-  ${props =>
+  ${(props) =>
     props.title &&
     `
       background: url("https://source.unsplash.com/900x1600/?${props.title}");
@@ -111,8 +111,8 @@ const TripInfo = styled.div`
   }
 `
 
-const DivWrapper = styled.div`
-  background: black;
+const MainWrapper = styled.div`
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

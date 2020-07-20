@@ -7,28 +7,28 @@ import { BrowserRouter as Router, Link } from "react-router-dom"
 const Login = () => {
   return (
     <Router>
-      <StyledDiv>
+      <MainWrapper>
         <Title>WORLD ON YOUR HAND</Title>
         <h5>
           Going out of your comfort zone to open yourself up to the experiences and beauty that life
           gives you, no matter what path you choose to go on
         </h5>
         <ButtonWrapper>
-          <StyledButton>
+          <Button>
             <Link>Sign In</Link>
-          </StyledButton>
-          <StyledButton>
+          </Button>
+          <Button>
             <Link>Sign Up</Link>
-          </StyledButton>
+          </Button>
         </ButtonWrapper>
-      </StyledDiv>
+      </MainWrapper>
     </Router>
   )
 }
 
 export default Login
 
-export const StyledDiv = styled.div`
+export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -42,7 +42,7 @@ export const StyledDiv = styled.div`
   }
 
   ${Title} {
-    color: white;
+    color: #000000;
     h1 {
       font-size: 60px;
       margin-top: 150px;
@@ -51,11 +51,11 @@ export const StyledDiv = styled.div`
     }
   }
 `
-export const StyledButton = styled.button`
+export const Button = styled.button`
   margin: 15px;
   font-size: 20px;
   background: border-box;
-  color: white;
+  color: #000000;
   border-radius: 15px;
   -webkit-text-stroke: medium;
   &:hover {
@@ -64,7 +64,7 @@ export const StyledButton = styled.button`
     text-decoration: none;
   }
   link {
-    color: white;
+    color: #000000;
   }
 `
 export const ButtonWrapper = styled.div`

@@ -19,27 +19,27 @@ const App = () => {
           <div>
             <Switch>
               <Route path="/trips/:tripId/AddEvent">
-                <StyledLi>
+                <List>
                   <Link to="/trips">
                     <FontAwesomeIcon icon={faAngleLeft} /> trips
                   </Link>
-                </StyledLi>
+                </List>
                 <AddEvent />
               </Route>
               <Route path="/trips/:tripId">
-                <StyledLi>
+                <List>
                   <Link to="/trips">
                     <FontAwesomeIcon icon={faAngleLeft} /> trips
                   </Link>
-                </StyledLi>
+                </List>
                 <SingleTrip />
               </Route>
               <Route path="/newTrip">
-                <StyledLi>
+                <List>
                   <Link to="/trips">
                     <FontAwesomeIcon icon={faAngleLeft} /> trips
                   </Link>
-                </StyledLi>
+                </List>
                 <NewTrip />
               </Route>
               <Route path="/">
@@ -55,11 +55,11 @@ const App = () => {
 
 export default App
 
-const StyledLi = styled.li`
-  color: white;
+const List = styled.li`
+  color: #000000;
   list-style-type: none;
   a {
-    color: white;
+    color: #000000;
     text-decoration: none;
   }
 `

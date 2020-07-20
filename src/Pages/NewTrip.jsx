@@ -10,34 +10,34 @@ export default function NewTrip() {
   const { createTrip } = useTrips()
   const history = useHistory()
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     createTrip(data)
     history.push("/trips")
   }
 
   return (
-    <StyledForm onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-      <StyleLabel>name</StyleLabel>
-      <StyleInput name="title" defaultValue="" ref={register({ required: true })} />
+    <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+      <Lable>name</Lable>
+      <Input name="title" defaultValue="" ref={register({ required: true })} />
       {errors.title && <span>Please enter your name trip</span>}
 
-      <StyleLabel>number of people</StyleLabel>
-      <StyleInput name="numberOfPeople" defaultValue="" ref={register({ required: true })} />
+      <Lable>number of people</Lable>
+      <Input name="numberOfPeople" defaultValue="" ref={register({ required: true })} />
       {errors.numberOfPeople && <span>Please enter number of people</span>}
 
-      <StyleLabel>from</StyleLabel>
-      <StyleInput type="date" name="from" defaultValue="from" ref={register} />
-      <StyleLabel>to</StyleLabel>
-      <StyleInput type="date" name="to" defaultValue="to" ref={register} />
+      <Lable>from</Lable>
+      <Input type="date" name="from" defaultValue="from" ref={register} />
+      <Lable>to</Lable>
+      <Input type="date" name="to" defaultValue="to" ref={register} />
 
-      <StyleInput name="id" type="hidden" value={getNewId()} ref={register} />
+      <Input name="id" type="hidden" value={getNewId()} ref={register} />
       <InputWrapper>
-        <StyleInput type="submit" />
+        <Input type="submit" />
       </InputWrapper>
-    </StyledForm>
+    </Form>
   )
 }
-const StyledForm = styled.form`
+const Form = styled.form`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -46,16 +46,16 @@ const StyledForm = styled.form`
   background-repeat: no-repeat;
 
   span {
-    color: white;
+    color: #000000;
     display: flex;
     justify-content: center;
   }
 `
-const StyleInput = styled.input`
-  color: white;
+const Input = styled.input`
+  color: #000000;
   text-transform: uppercase;
   background: none;
-  border: 3px solid white;
+  border: 3px solid #000000;
   padding: 20px;
   font-size: 16px;
   font-weight: 100;
@@ -74,8 +74,8 @@ const InputWrapper = styled.div`
     text-decoration: none;
   }
 `
-const StyleLabel = styled.label`
+const Lable = styled.label`
   margin-left: 10px;
   font-weight: bold;
-  color: white;
+  color: #000000;
 `
