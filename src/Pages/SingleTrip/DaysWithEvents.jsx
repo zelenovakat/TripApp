@@ -37,8 +37,8 @@ const DaysWithEvents = (props) => {
                       <FontAwesomeIcon icon={faTrashAlt} />
                     </Button>
                     <Time>{event.time}</Time>
-                    <p>{event.description}</p>
                     <p>{event.title}</p>
+                    <p>{event.description}</p>
                   </EventWrapper>
                 )
               })}
@@ -53,8 +53,10 @@ const DaysWithEvents = (props) => {
 export default DaysWithEvents
 
 const Button = styled.button`
-  color: #000000;
+  color: #484848;
   text-align: right;
+  border: none;
+  background: #f8f8f8;
 `
 
 const OneDay = styled.div`
@@ -66,22 +68,20 @@ const OneDay = styled.div`
 `
 
 const DaysDate = styled.div`
-  display: flex;
-  width: 250px;
-  background: antiquewhite;
-  border: 2px solid #000000;
-  border-radius: 15px;
-  padding: 8px 4px;
-  justify-content: center;
-  color: #000000;
+  background: #f8f8f8;
+  border: 2px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 10px 100px;
+  color: #484848;
 `
 const EventWrapper = styled.div`
-  display: flex;
+  overflow-wrap: anywhere;
   width: 250px;
-  background: #ffffff;
-  color: #000000;
-  border: 2px solid #000000;
-  border-radius: 15px;
+  display: flex;
+  background: #f8f8f8;
+  color: #484848;
+  border: 2px solid #e5e5e5;
+  border-radius: 10px;
   padding: 8px 4px;
   justify-content: center;
   flex-direction: column;

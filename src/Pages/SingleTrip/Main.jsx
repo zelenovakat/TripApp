@@ -5,6 +5,8 @@ import styled from "styled-components"
 import moment from "moment"
 import { Link } from "react-router-dom"
 import DaysWithEvents from "./DaysWithEvents"
+import Title from "../../components/Title"
+import StyledButton from "../../components/StyledButton"
 
 const SingleTrip = () => {
   const { tripId } = useParams()
@@ -17,6 +19,7 @@ const SingleTrip = () => {
 
   return (
     <MainWrapper>
+      <Title>Create Your Trip</Title>
       <TripInfo title={trip.title}>
         <InfoBackground>
           <p>
@@ -25,13 +28,15 @@ const SingleTrip = () => {
           <p>{trip.numberOfPeople} persons</p>
         </InfoBackground>
       </TripInfo>
-      <Button>
-        <Link to={`/trips/${trip.id}/AddEvent`}>Add event</Link>
-      </Button>
-
+      <ButtonWrapper>
+        <StyledButton>
+          <Link type="button" to={`/trips/${trip.id}/new-trip`}>
+            Add event
+          </Link>
+        </StyledButton>
+      </ButtonWrapper>
       <RowWrapper>
         <MiddleLine></MiddleLine>
-
         <DaysWithEvents trip={trip} />
       </RowWrapper>
     </MainWrapper>
@@ -40,27 +45,10 @@ const SingleTrip = () => {
 
 export default SingleTrip
 
-const Button = styled.button`
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-top: 15px;
-  margin-bottom: 50px;
-  font-size: 20px;
-  color: white;
-  border-radius: 15px;
-  -webkit-text-stroke: medium;
-  a {
-    text-decoration: none;
-    color: darkslategray;
-  }
-  &:hover {
-    background-color: mediumaquamarine;
-    color: black;
-    text-decoration: none;
-  }
-  link {
-    color: white;
-  }
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
 `
 
 const InfoBackground = styled.div`
@@ -84,13 +72,13 @@ const InfoBackground = styled.div`
 `
 
 const City = styled.span`
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 27px;
+  font-weight: normal;
   text-transform: capitalize;
 `
 
 const TripInfo = styled.div`
-  min-height: 400px;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -104,30 +92,30 @@ const TripInfo = styled.div`
 
   p {
     font-size: 24px;
-    font-weight: bold;
+    font-weight: normal;
     margin: 0;
-    color: #fff;
+    color: #ffffff;
     z-index: 2;
   }
 `
 
 const MainWrapper = styled.div`
-  background: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  margin: 15px;
 `
 const MiddleLine = styled.div`
   position: absolute;
   width: 1px;
   z-index: 1;
-  background: gray;
+  background: #e5e5e5;
   left: 50%;
   height: 100%;
 `
 const RowWrapper = styled.div`
   position: relative;
-
+  background: #ffffff;
   div:nth-child(2) {
     position: relative;
     z-index: 2;
