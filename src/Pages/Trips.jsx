@@ -117,7 +117,6 @@ const Button = styled.button`
     font-size: 20px;
   }
 `
-
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
