@@ -6,6 +6,7 @@ export const StyledButton = styled.button`
   border-radius: 10px;
   background-color: #4687a8;
   color: #f8f8f8;
+  border: 2px solid #3f7a9b;
   a {
     text-decoration: none;
     color: #f8f8f8;
@@ -13,7 +14,7 @@ export const StyledButton = styled.button`
     padding: 10px 100px;
   }
   &:hover {
-    background-color: #4687a8;
+    background-color: #3f7a9b;
     color: #ff0606;
     text-decoration: none;
   }

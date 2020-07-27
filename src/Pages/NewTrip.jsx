@@ -18,30 +18,42 @@ export default function NewTrip() {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-      <Title>Create A New Trip</Title>
+    <MainWrap>
+      <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+        <Title>Create your trip</Title>
 
-      <StyledLable>Name</StyledLable>
-      <Input name="title" defaultValue="" ref={register({ required: true })} />
-      {errors.title && <span>Please enter your name trip</span>}
+        <StyledLable>Destination</StyledLable>
+        <Input type="text" name="title" defaultValue="" ref={register({ required: true })} />
+        {errors.title && <span>Please enter your name trip</span>}
 
-      <StyledLable>Number of people</StyledLable>
-      <Input name="numberOfPeople" defaultValue="" ref={register({ required: true })} />
-      {errors.numberOfPeople && <span>Please enter number of people</span>}
+        <StyledLable>Number of people</StyledLable>
+        <Input
+          input
+          type="number"
+          name="numberOfPeople"
+          defaultValue=""
+          ref={register({ required: true })}
+        />
+        {errors.numberOfPeople && <span>Please enter number of people</span>}
 
-      <StyledLable>From</StyledLable>
-      <Input type="date" name="from" defaultValue="from" ref={register} />
-      <StyledLable>To</StyledLable>
-      <Input type="date" name="to" defaultValue="to" ref={register} />
+        <StyledLable>From</StyledLable>
+        <Input type="date" name="from" defaultValue="from" ref={register} />
+        <StyledLable>To</StyledLable>
+        <Input type="date" name="to" defaultValue="to" ref={register} />
 
-      <Input name="id" type="hidden" value={getNewId()} ref={register} />
-      <ButtonWrapper>
-        <StyledButtonWrapper type="submit">Add Trip</StyledButtonWrapper>
-      </ButtonWrapper>
-    </Form>
+        <Input name="id" type="hidden" value={getNewId()} ref={register} />
+        <ButtonWrapper>
+          <StyledButtonWrapper type="submit">Submit</StyledButtonWrapper>
+        </ButtonWrapper>
+      </Form>
+    </MainWrap>
   )
 }
+const MainWrap = styled.div`
+  width: 100%;
+`
 const Form = styled.form`
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -58,15 +70,13 @@ const Form = styled.form`
   }
 `
 const Input = styled.input`
-  text-transform: uppercase;
   background: #f8f8f8;
   border: 2px solid #e5e5e5;
   margin: 10px;
-  padding: 10px;
   border-radius: 10px;
-
+  box-sizing: border-box;
   outline: none;
-
+  padding: 10px;
   &:focus {
     border: 2px solid #4687a8;
   }
