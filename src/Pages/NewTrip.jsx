@@ -4,6 +4,8 @@ import styled from "styled-components"
 import { useTrips } from "../stores/TripStore"
 import { useHistory } from "react-router-dom"
 import { getNewId } from "../components/GetNewId"
+import Title from "../components/Title"
+import StyledButton from "../components/StyledButton"
 
 export default function NewTrip() {
   const { register, handleSubmit, errors } = useForm()
@@ -17,23 +19,25 @@ export default function NewTrip() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-      <Lable>name</Lable>
+      <Title>Create A New Trip</Title>
+
+      <StyledLable>Name</StyledLable>
       <Input name="title" defaultValue="" ref={register({ required: true })} />
       {errors.title && <span>Please enter your name trip</span>}
 
-      <Lable>number of people</Lable>
+      <StyledLable>Number of people</StyledLable>
       <Input name="numberOfPeople" defaultValue="" ref={register({ required: true })} />
       {errors.numberOfPeople && <span>Please enter number of people</span>}
 
-      <Lable>from</Lable>
+      <StyledLable>From</StyledLable>
       <Input type="date" name="from" defaultValue="from" ref={register} />
-      <Lable>to</Lable>
+      <StyledLable>To</StyledLable>
       <Input type="date" name="to" defaultValue="to" ref={register} />
 
       <Input name="id" type="hidden" value={getNewId()} ref={register} />
-      <InputWrapper>
-        <Input type="submit" />
-      </InputWrapper>
+      <ButtonWrapper>
+        <StyledButtonWrapper type="submit">Add Trip</StyledButtonWrapper>
+      </ButtonWrapper>
     </Form>
   )
 }
@@ -42,40 +46,41 @@ const Form = styled.form`
   justify-content: center;
   flex-direction: column;
   background-size: cover;
-  min-height: 100vh;
   background-repeat: no-repeat;
-
+  h2 {
+    display: flex;
+    justify-content: center;
+  }
   span {
-    color: #000000;
+    color: #4687a8;
     display: flex;
     justify-content: center;
   }
 `
 const Input = styled.input`
-  color: #000000;
   text-transform: uppercase;
-  background: none;
-  border: 3px solid #000000;
-  padding: 20px;
-  font-size: 16px;
-  font-weight: 100;
+  background: #f8f8f8;
+  border: 2px solid #e5e5e5;
   margin: 10px;
-  width: 300px;
   padding: 10px;
-
   border-radius: 10px;
-`
-const InputWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  &:hover {
-    background-color: mediumaquamarine;
-    color: black;
-    text-decoration: none;
+
+  outline: none;
+
+  &:focus {
+    border: 2px solid #4687a8;
   }
 `
-const Lable = styled.label`
+const StyledLable = styled.label`
   margin-left: 10px;
-  font-weight: bold;
-  color: #000000;
+  color: #484848;
+  font-weight: normal;
+`
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`
+const StyledButtonWrapper = styled(StyledButton)`
+  padding: 10px 100px;
 `

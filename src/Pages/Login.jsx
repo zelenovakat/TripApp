@@ -59,7 +59,7 @@ export const Button = styled.button`
   border-radius: 15px;
   -webkit-text-stroke: medium;
   &:hover {
-    background-color: mediumaquamarine;
+    background-color: #4687a8;
     color: black;
     text-decoration: none;
   }

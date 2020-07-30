@@ -7,7 +7,8 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons"
 import { faUsers } from "@fortawesome/free-solid-svg-icons"
 import RemoveModal from "../components/RemoveModal"
 import useModal from "../utils/useModal"
-
+import Title from "../components/Title"
+import StyledButton from "../components/StyledButton"
 const Trips = () => {
   const { trips } = useTrips()
   const { removeTrip } = useTrips()
@@ -62,11 +63,11 @@ const Trips = () => {
           closeRemoveTripModal={closeRemoveTripModal}
         />
       </ScrollArea>
-      <List>
+      <ButtonWrapper>
         <StyledButton>
-          <Link to="/newTrip">New Trip</Link>
+          <Link to="/new-trip">New Trip</Link>
         </StyledButton>
-      </List>
+      </ButtonWrapper>
     </MainWrapper>
   )
 }
@@ -97,10 +98,6 @@ const TitleTrips = styled.div`
   display: flex;
   flex-direction: column;
 `
-const Title = styled.h2`
-  color: #000000;
-  font-weight: normal;
-`
 const Main = styled.div`
   flex-direction: column;
   width: 100%;
@@ -118,26 +115,6 @@ const Button = styled.button`
   z-index: 9999;
   svg {
     font-size: 20px;
-  }
-`
-export const StyledButton = styled.button`
-  margin: 15px;
-  font-size: 20px;
-  color: #ffffff;
-  border-radius: 5px;
-  padding: 8px 16px;
-  -webkit-text-stroke: medium;
-  a {
-    text-decoration: none;
-    color: darkslategray;
-  }
-  &:hover {
-    background-color: mediumaquamarine;
-    color: black;
-    text-decoration: none;
-  }
-  link {
-    color: #ffffff;
   }
 `
 const TitleWrapper = styled.div`
@@ -186,8 +163,7 @@ const TripsWrapper = styled.div`
 const ScrollArea = styled.div`
   overflow-x: scroll;
 `
-const List = styled.li`
-  list-style-type: none;
+const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
 `

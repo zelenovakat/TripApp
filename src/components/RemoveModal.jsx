@@ -35,7 +35,11 @@ const RemoveModal = ({ isShowing, hide, handleRemoveTrip, closeRemoveTripModal }
 export default RemoveModal
 const Button = styled.button`
   font-size: 20px;
-  padding: 1px 69px;
+  padding: 1px 60px;
+  margin: 5px;
+  background-color: #4687a8;
+  color: #f8f8f8;
+  border-radius: 10px;
   &:hover {
     background-color: #49afbb;
   }
