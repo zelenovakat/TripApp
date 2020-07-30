@@ -52,7 +52,7 @@ export default function AddEvent() {
       <Input name="tripId" type="hidden" value={trip.id} ref={register} />
 
       <ButtonWrapper>
-        <StyledButtonWrapper type="submit">Add Event</StyledButtonWrapper>
+        <StyledButtonWrapper type="submit">Submit</StyledButtonWrapper>
       </ButtonWrapper>
     </Form>
   )
@@ -76,7 +76,6 @@ const Form = styled.form`
   }
 `
 const Input = styled.input`
-  text-transform: uppercase;
   background: #f8f8f8;
   border: 2px solid #e5e5e5;
   margin: 10px;

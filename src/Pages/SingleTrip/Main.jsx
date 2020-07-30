@@ -109,7 +109,7 @@ const MiddleLine = styled.div`
   position: absolute;
   width: 1px;
   z-index: 1;
-  background: #e5e5e5;
+  background: #484848;
   left: 50%;
   height: 100%;
 `
