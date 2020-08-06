@@ -22,11 +22,13 @@ export default function NewTrip() {
       <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <Title>Create your trip</Title>
 
+
         <StyledLabel>Destination</StyledLabel>
         <Input type="text" name="title" defaultValue="" ref={register({ required: true })} />
         {errors.title && <span>Please enter your name trip</span>}
 
         <StyledLabel>Number of people</StyledLabel>
+
         <Input
           input
           type="number"
@@ -36,9 +38,12 @@ export default function NewTrip() {
         />
         {errors.numberOfPeople && <span>Please enter number of people</span>}
 
+
         <StyledLabel>From</StyledLabel>
         <Input type="date" name="from" defaultValue="from" ref={register} />
         <StyledLabel>To</StyledLabel>
+
+       
         <Input type="date" name="to" defaultValue="to" ref={register} />
 
         <Input name="id" type="hidden" value={getNewId()} ref={register} />
@@ -81,9 +86,11 @@ const Input = styled.input`
     border: 2px solid #4687a8;
   }
 `
+
 const StyledLabel = styled.label`
   margin-left: 10px;
   color: #484848;
+
 `
 
 const ButtonWrapper = styled.div`
