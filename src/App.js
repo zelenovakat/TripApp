@@ -10,7 +10,7 @@ import AddEvent from "./pages/AddEvent"
 import { ProvideEvents } from "./stores/EventStore"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons"
-
+import { mediaXs } from "../src/utils/Screen"
 const App = () => {
   return (
     <ProvideTrips>
@@ -65,5 +65,7 @@ const List = styled.li`
   }
 `
 const Wrapper = styled.div`
-  margin: 10px 400px;
+  ${mediaXs} {
+    margin: 10px 400px;
+  }
 `

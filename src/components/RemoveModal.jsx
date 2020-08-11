@@ -36,10 +36,11 @@ export default RemoveModal
 const Button = styled.button`
   font-size: 20px;
   padding: 1px 60px;
-  margin: 5px;
+  margin: 16px;
   background-color: #4687a8;
   color: #f8f8f8;
   border-radius: 10px;
+  border: 2px solid #3f7a9b;
   &:hover {
     background-color: #49afbb;
   }
@@ -52,7 +53,11 @@ const MainWrapper = styled.div`
     text-align: center;
   }
 `
-const ButtonWrapper = styled.div``
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -66,7 +71,7 @@ const ModalOverlay = styled.div`
 `
 const ModalWrapper = styled.div`
   position: fixed;
-  top: 0;
+  top: 155px;
   left: 0;
   z-index: 9999;
   width: 100%;

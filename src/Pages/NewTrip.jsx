@@ -37,13 +37,14 @@ export default function NewTrip() {
         {errors.numberOfPeople && <span>Please enter number of people</span>}
 
         <StyledLable>From</StyledLable>
-        <Input type="date" name="from" defaultValue="from" ref={register} />
+        <Input type="date" name="from" defaultValue="from" ref={register} required />
         <StyledLable>To</StyledLable>
-        <Input type="date" name="to" defaultValue="to" ref={register} />
+        <Input type="date" name="to" defaultValue="to" ref={register} required />
 
         <Input name="id" type="hidden" value={getNewId()} ref={register} />
         <ButtonWrapper>
           <StyledButtonWrapper type="submit">Submit</StyledButtonWrapper>
+          {/* disabled="disabled" */}
         </ButtonWrapper>
       </Form>
     </MainWrap>
@@ -64,7 +65,7 @@ const Form = styled.form`
     justify-content: center;
   }
   span {
-    color: #4687a8;
+    color: #ed0b0e;
     display: flex;
     justify-content: center;
   }

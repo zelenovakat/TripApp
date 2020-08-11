@@ -28,13 +28,13 @@ export default function AddEvent() {
   return (
     <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
       <Title>Create Event</Title>
-      <Input name="id" type="hidden" value={getNewId()} ref={register} />
+      <Input name="id" type="hidden" value={getNewId()} ref={register} required />
 
       <Label>Title</Label>
-      <Input name="title" defaultValue="" ref={register} />
+      <Input name="title" defaultValue="" ref={register} required />
 
       <Label>Description</Label>
-      <Input name="description" defaultValue="" ref={register} />
+      <Input name="description" defaultValue="" ref={register} required />
 
       <Label>Date</Label>
       <Input
@@ -48,7 +48,7 @@ export default function AddEvent() {
       {errors.from && <span>Please enter correct date</span>}
 
       <Label>Time</Label>
-      <Input type="time" name="time" defaultValue="time" ref={register} />
+      <Input type="time" name="time" defaultValue="time" ref={register} required />
       <Input name="tripId" type="hidden" value={trip.id} ref={register} />
 
       <ButtonWrapper>
@@ -66,7 +66,7 @@ const Form = styled.form`
   background-repeat: no-repeat;
 
   span {
-    color: #4687a8;
+    color: #ed0b0e;
     display: flex;
     justify-content: center;
   }
