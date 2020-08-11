@@ -9,6 +9,7 @@ import RemoveModal from "../components/RemoveModal"
 import useModal from "../utils/useModal"
 import Title from "../components/Title"
 import StyledButton from "../components/StyledButton"
+import moment from "moment"
 const Trips = () => {
   const { trips } = useTrips()
   const { removeTrip } = useTrips()
@@ -33,7 +34,7 @@ const Trips = () => {
             <TitleTrips>
               <NameTrip>{trip.title}</NameTrip>
               <p>
-                {trip.from}-{trip.to}
+                {moment(trip.from).format("DD.MM.YYYY")}-{moment(trip.to).format("DD.MM.YYYY")}
               </p>
               <NumberOfPeople>
                 <p>{trip.numberOfPeople}</p>
@@ -166,4 +167,5 @@ const ScrollArea = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 15px;
 `

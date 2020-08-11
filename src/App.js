@@ -16,7 +16,7 @@ const App = () => {
     <ProvideTrips>
       <ProvideEvents>
         <Router>
-          <div>
+          <Wrapper>
             <Switch>
               <Route path="/trips/:tripId/new-trip">
                 <List>
@@ -46,7 +46,7 @@ const App = () => {
                 <Trips />
               </Route>
             </Switch>
-          </div>
+          </Wrapper>
         </Router>
       </ProvideEvents>
     </ProvideTrips>
@@ -63,4 +63,7 @@ const List = styled.li`
     color: #484848;
     text-decoration: none;
   }
+`
+const Wrapper = styled.div`
+  margin: 10px 400px;
 `
